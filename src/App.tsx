@@ -1,8 +1,19 @@
 import React from 'react';
 import logo from './logo.svg';
-import './App.css';
+
+import { getEvents } from './config/firebase';
+
+import './App.scss';
 
 function App() {
+
+  React.useEffect(() => {
+    console.log('INIT: ');
+    getEvents().then((list) => {
+      console.log('Events: ', list);
+    });
+  }, []);
+  
   return (
     <div className="App">
       <header className="App-header">

@@ -1,0 +1,5 @@
+
+setup : https://firebase.google.com/docs/web/setup?authuser=0&hl=fr
+
+app-check: https://firebase.google.com/docs/app-check/web/recaptcha-provider?authuser=0&hl=fr
+

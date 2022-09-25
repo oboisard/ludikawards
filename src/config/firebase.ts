@@ -1,8 +1,11 @@
-import logo from './logo.svg';
-import './App.css';
 
-import { initializeApp } from 'firebase/app';
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "firebase/app";
+// import { getAnalytics } from "firebase/analytics";
 import { getFirestore, collection, getDocs } from 'firebase/firestore/lite';
+
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
 
 const firebaseConfig = {
   apiKey: "AIzaSyAKLV6F9OhHeRcOmNPlZvjrco2AK5hsfSQ",
@@ -15,44 +18,19 @@ const firebaseConfig = {
   measurementId: "G-9JNMDMJGKK"
 };
 
+// Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
-
+// const analytics = getAnalytics(app);
 
 // Get a list of cities from your database
-async function getEvents() {
+const getEvents = async () => {
   const eventsCol = collection(db, 'events');
   const eventsSnapshot = await getDocs(eventsCol);
   const eventsList = eventsSnapshot.docs.map(doc => doc.data());
   return eventsList;
 }
 
-function App() {
-
-  getEvents().then((list) => {
-    console.log(list);
-  });
-
-  
-
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+export {
+  getEvents
 }
-
-export default App;
